@@ -3,6 +3,7 @@ node_modules/
 config/push-config.json
 data/articles.json
 data/push-state.json
+data/*.log
 cloudflared.exe
 cloudflared2.exe
 *.log

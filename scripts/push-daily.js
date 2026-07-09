@@ -1,6 +1,7 @@
 /**
- * AI 信号雷达 — 推送脚本 v2
+ * AI 信号雷达 — 推送脚本 v2.1（通用版）
  * 从 follow-builders 抄的：分片推送 + 内容去重 + 配置化
+ * 无 feed 数据时优雅降级
  */
 
 const axios = require("axios");
@@ -36,6 +37,26 @@ function loadConfig() {
     return DEFAULT_CONFIG;
   }
   return { ...DEFAULT_CONFIG, ...JSON.parse(fs.readFileSync(CONFIG_PATH, "utf-8")) };
+}
+
+// ============================================================
+// 数据文件加载（带降级）
+// ============================================================
+const DATA_DIR = path.join(__dirname, "..", "data");
+
+function loadFeedJSON(filename, skillDir) {
+  // 优先读 follow-builders 实时数据
+  const livePath = path.join(skillDir, filename);
+  if (fs.existsSync(livePath)) {
+    return JSON.parse(fs.readFileSync(livePath, "utf-8"));
+  }
+  // 降级：读项目自带示例数据
+  const fallbackPath = path.join(DATA_DIR, filename);
+  if (fs.existsSync(fallbackPath)) {
+    console.log(`[推送 v2] ⚠️ 使用项目自带示例数据（${filename}），可能不是最新内容`);
+    return JSON.parse(fs.readFileSync(fallbackPath, "utf-8"));
+  }
+  return null;
 }
 
 // ============================================================
@@ -163,12 +184,21 @@ const BUILDER_ROLES = {
 };
 
 function digestFromFeed(config) {
-  const skillDir = config.feed.skillDir;
-  const feedX = JSON.parse(fs.readFileSync(path.join(skillDir, "feed-x.json"), "utf-8"));
-  const feedPod = JSON.parse(fs.readFileSync(path.join(skillDir, "feed-podcasts.json"), "utf-8"));
+  const feedX = loadFeedJSON("feed-x.json", config.feed.skillDir);
+  const feedPod = loadFeedJSON("feed-podcasts.json", config.feed.skillDir);
+
+  // 无数据：友好提示
+  if (!feedX && !feedPod) {
+    console.log("[推送 v2] ⚠️ 未找到 feed 数据");
+    console.log("[推送 v2] 请先安装数据源：");
+    console.log("  git clone https://github.com/zarazhangrui/follow-builders.git ~/.claude/skills/follow-builders");
+    console.log("  cd ~/.claude/skills/follow-builders && git pull");
+    return { text: null, state: null };
+  }
+
   const state = loadState();
 
-  const active = (feedX.x || [])
+  const active = (feedX?.x || [])
     .filter((b) => b.tweets?.length > 0)
     .sort((a, b) => {
       const am = Math.max(...(a.tweets || []).map((t) => t.likes || 0), 0);
@@ -177,7 +207,7 @@ function digestFromFeed(config) {
     });
 
   // 去重：过滤已推送的播客
-  const newPodcast = feedPod.podcasts?.find((p) => isNewPodcast(state, p.guid));
+  const newPodcast = feedPod?.podcasts?.find((p) => isNewPodcast(state, p.guid));
 
   // 去重：只展示有新推文的建造者
   const newBuilders = active.filter((b) =>
@@ -230,8 +260,11 @@ function digestFromFeed(config) {
     });
   }
 
+  const xCount = feedX?.x?.length || 0;
+  const podCount = feedPod?.podcasts?.length || 0;
+
   lines.push("━━━━━━━━");
-  lines.push(`📊 ${active.length} 位建造者 · ${feedPod.podcasts?.length || 0} 期播客 · ${state.lastPushes.length + 1} 轮推送`);
+  lines.push(`📊 ${xCount} 位建造者 · ${podCount} 期播客 · ${state.lastPushes.length + 1} 轮推送`);
 
   return { text: lines.join("\n"), state };
 }
@@ -259,6 +292,12 @@ async function main() {
 
   if (!digest) {
     console.log("[推送 v2] 无新内容，跳过推送");
+    return;
+  }
+
+  if (!state) {
+    console.log("[推送 v2] 无可用数据源，跳过推送");
+    console.log("[推送 v2] 💡 提示：安装 follow-builders 后可获取实时数据");
     return;
   }
 

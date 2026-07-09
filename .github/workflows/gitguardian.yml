@@ -1,3 +1,7 @@
+# GitGuardian 密钥扫描（可选）
+# 使用前：在仓库 Settings > Secrets and variables > Actions 添加 GITGUARDIAN_API_KEY
+# 未配置时会跳过扫描，不会影响 CI 状态
+
 name: GitGuardian scan
 
 on:
@@ -14,5 +18,6 @@ jobs:
         with:
           fetch-depth: 0
       - uses: GitGuardian/ggshield/actions/secret@v1
+        continue-on-error: true
         env:
           GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}

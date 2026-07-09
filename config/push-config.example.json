@@ -1,0 +1,14 @@
+{
+  "wechat": {
+    "appId": "YOUR_WX_APPID",
+    "appSecret": "YOUR_WX_APPSECRET"
+  },
+  "digest": {
+    "maxBuilders": 8,
+    "tweetPreviewChars": 120,
+    "pushChunkSize": 1800
+  },
+  "feed": {
+    "skillDir": ""
+  }
+}

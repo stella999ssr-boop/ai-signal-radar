@@ -1,5 +1,5 @@
 /**
- * AI 信号雷达 — WeChat Worker v2（简化版）
+ * AI 信号雷达 — WeChat Worker v2.1（通用版）
  */
 
 const http = require("http");
@@ -35,12 +35,11 @@ function buildTextReply(toUser, fromUser, content) {
 function getWelcomeMessage() {
   return `👋 欢迎关注「AI 信号雷达」
 
-我是橘子专属的 AI 资讯策展 Agent，监控 8 个精选中文 AI 公众号。
+追踪 26 位 AI 建造者 + 6 个顶级播客 + 2 个官方博客，每日推送 AI 前沿动态。
 
-你可以这样跟我对话：
-• 「本周信号」— 查看最新 AI 信号周报
-• 「深入 XX」— 展开某个话题的深度解读
-• 「信源」— 查看监控的公众号列表
+💬 发送以下指令与我对话：
+• 「本周信号」— 查看今日 AI 建造者动态
+• 「信源」— 查看监控的信源列表
 • 「帮助」— 查看所有命令`;
 }
 
@@ -144,6 +143,6 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`🚀 AI 信号雷达 v2 已启动，端口 ${PORT}`);
+  console.log(`🚀 AI 信号雷达 v2.1 已启动，端口 ${PORT}`);
   console.log(`📍 微信回调: http://你的域名/wechat`);
 });
