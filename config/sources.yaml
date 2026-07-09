@@ -1,0 +1,200 @@
+# 公众号 AI 信号雷达 — 信源配置
+
+# ============================================================
+# MVP 阶段（8 个核心号）
+# ============================================================
+
+sources:
+  mvp:
+    - name: "夕小瑶科技说"
+      id: xixiaoyao
+      tier: T1
+      weight: 3.0
+      category: 每周精读
+      description: "NLP/大模型方向，可视化流程图讲复杂算法，新手最友好的深度号"
+
+    - name: "李rumor"
+      id: lirumor
+      tier: T1
+      weight: 3.0
+      category: 每周精读
+      description: "字节跳动NLP研究员，亲自训模型，从数据清洗到评测指标的踩坑实录"
+
+    - name: "张俊林"
+      id: zhangjunlin
+      tier: T1
+      weight: 3.0
+      category: 每周精读
+      description: "新浪微博AI Lab负责人，大模型技术深度解读，国内最值得读的AI技术号"
+
+    - name: "王不二丶bOol"
+      id: wangbuer
+      tier: T2
+      weight: 2.5
+      category: 碎片时间
+      description: "Agent架构+LLM微调实战，Multi-Agent协作、工具调用链路、RAG效果优化"
+
+    - name: "机器之心"
+      id: jiqizhixin
+      tier: T3
+      weight: 2.0
+      category: 工具资讯
+      description: "国内最老牌AI媒体，AI论文解读全网领先，技术底盘强"
+
+    - name: "量子位"
+      id: liangziwei
+      tier: T4
+      weight: 1.5
+      category: 资讯快报
+      description: "时效性最强，AI热点追踪，速度与深度平衡最好"
+
+    - name: "数字生命卡兹克"
+      id: kazik
+      tier: T2
+      weight: 2.5
+      category: 产品思维
+      description: "AI产品体验+行业评论，视角独特，虚实传媒创始人"
+
+    - name: "宝玉AI"
+      id: baoyuai
+      tier: T3
+      weight: 2.0
+      category: 碎片时间
+      description: "Prompt工程、AI工具实操，英文AI前沿信息的中文化枢纽"
+
+# ============================================================
+# 全量扩展（后续 32 个号）
+# ============================================================
+
+  extended:
+    # 🟠 每周精读 T1 权重3.0
+    weekly_deep:
+      - name: "PaperWeekly"
+        tier: T1
+        weight: 3.0
+        description: "每日精选顶会论文，学术社区型"
+
+    # 🔴 产业深度 T2 权重2.5
+    industry_deep:
+      - name: "甲子光年"
+        tier: T2
+        weight: 2.5
+        description: "AI产业研究最系统，投资人与创业者必看"
+      - name: "Founder Park"
+        tier: T2
+        weight: 2.5
+        description: "极客公园旗下，聚焦AI创业者和产品"
+      - name: "42章经"
+        tier: T2
+        weight: 2.5
+        description: "商业逻辑+投资视角拆解科技公司"
+      - name: "硅星人Pro"
+        tier: T2
+        weight: 2.5
+        description: "硅谷AI一线报道，中美双视角"
+      - name: "OneFlow"
+        tier: T2
+        weight: 2.5
+        description: "深度学习框架+大模型基础设施"
+      - name: "InfoQ"
+        tier: T2
+        weight: 2.5
+        description: "技术社区，AI工程化与架构"
+
+    # 🟢 产品思维 T2 权重2.5
+    product:
+      - name: "十字路口"
+        tier: T2
+        weight: 2.5
+        description: "AI产品+商业模式的交叉分析"
+      - name: "潘乱"
+        tier: T2
+        weight: 2.5
+        description: "科技产业深度观察，产品叙事"
+      - name: "黄叔"
+        tier: T2
+        weight: 2.5
+        description: "AI产品落地与商业模式"
+      - name: "赛博禅心"
+        tier: T2
+        weight: 2.5
+        description: "AI+人文，跨学科视角"
+      - name: "少楠Plidezus"
+        tier: T2
+        weight: 2.5
+        description: "产品方法论+AI工具深度思考"
+
+    # 🔵 工具/资讯 T3 权重2.0
+    tools:
+      - name: "歸藏的AI工具箱"
+        tier: T3
+        weight: 2.0
+        description: "AIGC工具测评，新模型/工具一手体验"
+      - name: "Datawhale"
+        tier: T3
+        weight: 2.0
+        description: "AI开源学习社区，教程+实战"
+      - name: "AI前线"
+        tier: T3
+        weight: 2.0
+        description: "InfoQ旗下，AI工程化与团队管理"
+      - name: "极客邦科技"
+        tier: T3
+        weight: 2.0
+        description: "技术社区，大会内容+技术趋势"
+      - name: "LangGPT"
+        tier: T3
+        weight: 2.0
+        description: "Prompt工程方法论到Agent工作流编排"
+      - name: "阿泽学习笔记"
+        tier: T3
+        weight: 2.0
+        description: "Agent落地经验分享"
+
+    # 🟡 碎片时间 T3 权重2.0
+    casual:
+      - name: "李继刚"
+        tier: T3
+        weight: 2.0
+        description: "AI编程+独立开发者视角"
+      - name: "浮之静"
+        tier: T3
+        weight: 2.0
+        description: "AI产品+技术趋势，轻量点评"
+      - name: "AI Native"
+        tier: T3
+        weight: 2.0
+        description: "AI原生应用与产品创新"
+
+    # ⚪ 资讯快报 T4 权重1.5
+    news:
+      - name: "新智元"
+        tier: T4
+        weight: 1.5
+        description: "全球AI前沿，采访密度高"
+      - name: "极客公园"
+        tier: T4
+        weight: 1.5
+        description: "创新产品+创始人访谈"
+      - name: "智东西"
+        tier: T4
+        weight: 1.5
+        description: "智能硬件+AI产业资讯"
+
+# ============================================================
+# 评分参数
+# ============================================================
+scoring:
+  dimensions:
+    novelty:      { weight: 0.25, description: "新颖性：这条信息有多新/多意外" }
+    impact:       { weight: 0.30, description: "影响力：对行业格局的影响程度" }
+    actionability:{ weight: 0.15, description: "可执行性：能否转化为行动" }
+    controversy:  { weight: 0.20, description: "争议性：是否引发讨论/冲突" }
+    persistence:  { weight: 0.10, description: "持续性：是否可能持续发酵" }
+
+  signal_thresholds:
+    alert:  80   # ≥80 且跨源≥3 → 即时警报
+    daily:   60   # ≥60 → 日报精选
+    noise:    0   # <60 → 不推送
+
+  cross_source_min: 3  # 至少3个信源报道才触发警报

@@ -1,0 +1,21 @@
+{
+  "name": "ai-weekly-agent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node worker/index.js",
+    "tunnel": "npx localtunnel --port 8787 --subdomain aiweekly",
+    "dev": "node worker/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.18.0",
+    "express": "^5.2.1",
+    "localtunnel": "^2.0.2",
+    "xml2js": "^0.6.2"
+  }
+}
