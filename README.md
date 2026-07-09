@@ -83,9 +83,13 @@ schtasks /Create /SC DAILY /TN "AI_Signal_Radar" \
 
 > 提示：将下面 3 张截图保存到 `docs/screenshots/` 目录后，README 会自动展示。
 
-![微信推送截图 1](docs/screenshots/wechat-push-1.png)
-![微信推送截图 2](docs/screenshots/wechat-push-2.png)
-![微信推送截图 3](docs/screenshots/wechat-push-3.png)
+<table>
+<tr>
+<td><img src="docs/screenshots/wechat-push-1.png" width="280"></td>
+<td><img src="docs/screenshots/wechat-push-2.png" width="280"></td>
+<td><img src="docs/screenshots/wechat-push-3.png" width="280"></td>
+</tr>
+</table>
 
 **方式三：Claude Code 内查看（最完整，全文翻译+观点提炼）**
 
