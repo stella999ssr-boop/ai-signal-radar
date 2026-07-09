@@ -77,6 +77,16 @@ schtasks /Create /SC DAILY /TN "AI_Signal_Radar" \
   /ST 08:00
 ```
 
+### 效果截图
+
+#### 微信内查看「本周信号」推送效果
+
+> 提示：将下面 3 张截图保存到 `docs/screenshots/` 目录后，README 会自动展示。
+
+![微信推送截图 1](docs/screenshots/wechat-push-1.png)
+![微信推送截图 2](docs/screenshots/wechat-push-2.png)
+![微信推送截图 3](docs/screenshots/wechat-push-3.png)
+
 **方式三：Claude Code 内查看（最完整，全文翻译+观点提炼）**
 
 在 Claude Code 中输入 `/ai`，获取带全文翻译 + 深度解读的完整版 Digest。

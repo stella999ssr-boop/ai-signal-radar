@@ -34,9 +34,12 @@ function loadConfig() {
     const dir = path.dirname(CONFIG_PATH);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(CONFIG_PATH, JSON.stringify(DEFAULT_CONFIG, null, 2));
-    return DEFAULT_CONFIG;
   }
-  return { ...DEFAULT_CONFIG, ...JSON.parse(fs.readFileSync(CONFIG_PATH, "utf-8")) };
+  // 文件覆盖默认值，但环境变量始终优先（安全敏感字段）
+  const config = { ...DEFAULT_CONFIG, ...JSON.parse(fs.readFileSync(CONFIG_PATH, "utf-8")) };
+  if (process.env.WX_APPID) config.wechat.appId = process.env.WX_APPID;
+  if (process.env.WX_APPSECRET) config.wechat.appSecret = process.env.WX_APPSECRET;
+  return config;
 }
 
 // ============================================================
