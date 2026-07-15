@@ -2,7 +2,7 @@
 
 每天 3 分钟，看懂 AI 圈真正重要的事。
 
-一个全自动的 AI 信息策展 Agent。监控 28 个全球顶级 AI 信源（X/Twitter 建造者、播客、官方博客），自动完成**抓取 → 翻译 → 评分 → 聚类 → 观点提炼**全链路，最终通过**微信服务号**每日推送精品中英双语 Digest。
+一个全自动的 AI 信息策展 Agent。监控 33 个全球顶级 AI 信源（25 位 X/Twitter 建造者 + 6 个播客 + 2 个官方博客），自动完成**抓取 → 翻译 → 评分 → 聚类 → 观点提炼**全链路，最终通过**微信服务号**每日推送精品中英双语 Digest。
 
 > 核心理念来自 [follow-builders](https://github.com/zarazhangrui/follow-builders)："跟踪建造者，而非网红"。
 
@@ -12,11 +12,57 @@
 
 | 功能 | 说明 |
 |------|------|
-| 📡 **自动监控** | 追踪 26 位 AI 建造者 + 6 个顶级播客 + 2 个官方博客 |
+| 📡 **自动监控** | 追踪 25 位 AI 建造者 + 6 个顶级播客 + 2 个官方博客 |
 | 🌐 **全文翻译** | 英→中全文翻译（需 Claude Code），技术术语保留原文 |
 | 📱 **微信推送** | 每日定时推送到微信，支持分片、重试、去重 |
 | 💬 **对话交互** | 微信内发送指令，实时获取 AI 建造者动态 |
 | 📦 **开箱即用** | 自带示例数据，`npm install` 完就能跑通 |
+
+---
+
+## 信源列表
+
+> 核心理念："跟踪建造者，而非网红"。所有信源由 [follow-builders](https://github.com/zarazhangrui/follow-builders) 维护，每天通过 GitHub Actions 自动抓取。
+
+### 💬 X/Twitter 建造者（25 位）
+
+| 账号 | 身份 |
+|------|------|
+| @karpathy | 前 Tesla AI 总监 |
+| @sama | OpenAI CEO |
+| @amasad | Replit CEO |
+| @rauchg | Vercel CEO |
+| @levie | Box CEO |
+| @garrytan | Y Combinator CEO |
+| @joshwoodward | Google VP · Gemini App |
+| @thsottiaux | OpenAI Codex 负责人 |
+| @realmadhuguru | 前 Google Gemini PM |
+| @trq212 | Anthropic Claude Code 工程师 |
+| @alexalbert__ | Anthropic 开发者关系 |
+| @AmandaAskell | Anthropic 对齐研究员 |
+| @claudeai | Anthropic Claude 官方 |
+| @GoogleLabs | Google Labs |
+| @swyx | Latent Space 主持人 |
+| @mattturck | FirstMark 投资人 |
+| @danshipper | Every 联合创始人 |
+| @ryolu_ | Cursor 设计师 |
+| @petergyang | AI 教程作者 |
+| @zarazhangrui | Follow Builders 作者 |
+| @nikunj | AI 工程师 |
+| @steipete | PSPDFKit 创始人 |
+| @adityaag | South Park Commons |
+| @bcherny | AI 研究员 |
+| @_catwu | AI 产品设计师 |
+
+### 🎙 播客（6 个）
+
+Latent Space · No Priors · Training Data · Unsupervised Learning · The MAD Podcast · AI & I
+
+### 📝 官方博客（2 个）
+
+Anthropic Engineering Blog · Claude Blog
+
+> ⚠️ 本项目**不抓取微信公众号**。config/sources.yaml 为早期方案的历史遗留文件，仅供参考。
 
 ---
 
